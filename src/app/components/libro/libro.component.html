@@ -1,0 +1,21 @@
+<div class="row animated fadeIn fast" style="margin-top: 120px;margin-bottom: 150px">
+    <div class="col-md-4">
+        <img [src]="libro.img">
+        <br><br>
+        <button type="button" class="btn btn-outline-primary btn-block">Reservar</button>
+        <button type="button" class="btn btn-outline-primary btn-block" (click)="volver()">Volver atrás</button>
+        <button [routerLink]="['/editarLibro', libro.key$]" type="button" class="btn btn-outline-primary btn-block">Editar</button>
+    </div>
+
+    <div class="col-md-8">
+        <h1 class="animated fadeIn fast" style="color:#007bff !important;;margin-top: -8px"> {{libro.nombre}} <small> {{libro.autor}} </small></h1>
+        <hr>
+        <p class="resena">{{libro.resena}} </p>
+        <hr>
+        <div style="margin-top: 150px">
+            <p><small class="text-primary">Edicion: {{libro.edicion}} </small></p>
+            <p><small class="text-primary">Paginas: {{libro.paginas}}</small></p>
+            <p><small class="text-primary">Idioma: {{libro.idioma}} </small></p>
+        </div>
+    </div>
+</div>

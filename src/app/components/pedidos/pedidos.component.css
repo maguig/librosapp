@@ -1,0 +1,34 @@
+    .container {
+        border: 1px solid #999;
+        box-shadow: inset 0 -1px 5px 0 rgba(0, 0, 0, 0.2);
+        box-sizing: border-box;
+        padding: 20px;
+        background-color: white;
+        width: 80%;
+        text-align: center
+    }
+    
+    .Titulo1 {
+        padding: 20px;
+        background-color: #007bff !important;
+        color: white;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+    
+    button {
+        margin-top: 10px;
+    }
+    
+    img {
+        width: 60%;
+        height: 80%;
+    }
+    
+    .form-control {
+        width: 50%;
+        height: 30%;
+        font-size: 14px;
+        color: #5d666e;
+        margin-left: 32px;
+    }

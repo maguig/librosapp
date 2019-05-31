@@ -1,0 +1,68 @@
+<div style=" margin-top: 100px" *ngIf="!existeUser">
+
+    <form class="container">
+
+        <h1 class="Titulo1"> Registrarse </h1>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputEmail4">Mail</label>
+                <input type="email" class="form-control" id="inputEmail4" placeholder="Email" name="mail" [(ngModel)]="usuario.mail" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputPassword4">Contraseña</label>
+                <input type="password" class="form-control" id="inputPassword4" placeholder="Contraseña" name="contrasena" [(ngModel)]="usuario.contrasena" required>
+            </div>
+
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputName">Nombre</label>
+                <input type="name" class="form-control" id="inputName" placeholder="Name" name="nombre" [(ngModel)]="usuario.nombre" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputLastname">Apellido</label>
+                <input type="lastname" class="form-control" id="inputLastname" placeholder="Apellido" name="apellido" [(ngModel)]="usuario.apellido" required>
+            </div>
+        </div>
+
+        <button (click)="crearSiNoExiste(usuario)" type="submit" class="btn btn-outline-primary">Guardar</button>
+    </form>
+</div>
+
+
+<div style=" margin-top: 100px" *ngIf="existeUser">
+
+    <form class="container">
+        <div class="alert alert-primary" role="alert">
+            <h4 class="alert-heading">Lo sientimos!</h4>
+            <p>El mail ingresado ya existe, Vuelve a intentarlo</p>
+        </div>
+
+        <h1 class="Titulo1"> Registrarse </h1>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputEmail4">Mail</label>
+                <input type="email" class="form-control" id="inputEmail4" placeholder="Email" name="mail" [(ngModel)]="usuario.mail" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputPassword4">Contraseña</label>
+                <input type="password" class="form-control" id="inputPassword4" placeholder="Contraseña" name="contrasena" [(ngModel)]="usuario.contrasena" required>
+            </div>
+
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputName">Nombre</label>
+                <input type="name" class="form-control" id="inputName" placeholder="Name" name="nombre" [(ngModel)]="usuario.nombre" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputLastname">Apellido</label>
+                <input type="lastname" class="form-control" id="inputLastname" placeholder="Apellido" name="apellido" [(ngModel)]="usuario.apellido" required>
+            </div>
+        </div>
+
+        <button (click)="crearSiNoExiste(usuario)" type="submit" class="btn btn-outline-primary">Guardar</button>
+    </form>
+</div>

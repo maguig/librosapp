@@ -1,0 +1,49 @@
+<div style=" margin-top: 100px">
+
+    <div class="container">
+        <h1 class="Titulo1"> Administracion de libros </h1>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-lg-11">
+                        <input class="inputBuscar" type="search" placeholder="Buscar libro" aria-label="Search" #buscarTexto>
+
+                        <button style="margin-bottom: 7px;margin-left: 2px;" (click)="buscarLibro(buscarTexto.value)" type="button" class="btn btn-outline-primary"><i class="fas fa-search"></i></button>
+
+                        <button style="margin-bottom: 7px;margin-left: 19px;" (click)="verTodos()" class="btn btn-outline-primary">Todos</button>
+                    </div>
+                    <div class="col-lg-1">
+                        <button type="button" class="btn btn-outline-primary"><i class="fas fa-plus-square"  [routerLink]="['/agregarLibro']" ></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <table class="table table-striped" style="width: 100%">
+            <thead>
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Autor</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let libro of libros">
+                    <td> {{libro.nombre}} </td>
+                    <td> {{libro.autor}} </td>
+                    <td>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <button (click)="borrarLibroAdm(libro.key$)" class="btn btn-outline-danger" style="padding: 5px"><i class="far fa-trash-alt"></i></button>
+                            </div>
+                            <div class="col-lg-6">
+                                <button type="submit" [routerLink]="['/editarLibro',libro.key$]" class="btn btn-outline-success" style="padding: 5px"><i class="far fa-edit"></i></button>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

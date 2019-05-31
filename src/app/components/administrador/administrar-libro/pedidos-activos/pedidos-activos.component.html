@@ -1,0 +1,57 @@
+<div style=" margin-top: 100px">
+
+    <div class="container">
+        <h1 class="Titulo1"> Pedidos activos </h1>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <input class="inputBuscar" type="search" placeholder="Buscar libro" aria-label="Search" #buscarTexto>
+
+                        <button style="margin-bottom: 7px;margin-left: 2px;" type="button" class="btn btn-outline-primary"><i class="fas fa-search"></i></button>
+
+                        <button style="margin-bottom: 7px;margin-left: 10px;margin-right: 5px;" class="btn btn-outline-primary">Todos</button>
+
+                        <button style="margin-bottom: 7px;" class="btn btn-outline-primary">Morosos</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <table class="table table-striped" style="width: 100%">
+            <thead>
+                <tr>
+                    <th scope="col">Usuario</th>
+                    <th scope="col">Libro</th>
+                    <th scope="col">Fecha de reserva</th>
+                    <th scope="col">Fecha de devolucion</th>
+                    <th scope="col">Fuera de termino</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <!-- *ngFor="let libro of libros" -->
+                <tr>
+                    <td> maguidifalco@gmail.com</td>
+                    <td>sinceramente</td>
+                    <td> 10/05</td>
+                    <td>15/05</td>
+                    <td style="color:red">16/05</td>
+                    <td>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <button class="btn btn-outline-danger" style="padding: 5px"><i class="fas fa-user-times"></i></button>
+                            </div>
+                            <div class="col-lg-6">
+                                <button class="btn btn-outline-success" style="padding: 5px"><i class="fas fa-user-check"></i></button>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

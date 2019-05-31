@@ -1,0 +1,16 @@
+<div *ngFor="let libro of libros">
+    <div class="card bg-transparent mb-3">
+        <img style=" width: 100%;height: 100%;" [src]="libro.img" class="img-fluid" [alt]="libro.nombre" />
+        <div class="card-body">
+            <h5 class="card-title" style="color: #007bff !important">{{ libro.nombre }}</h5>
+            <p class="card-text">
+                <small class="text-primary"> {{ libro.autor }} </small>
+            </p>
+
+            <button (click)="verLibro(libro.key$)" class="btn btn-outline-primary btn-block">Ver más... </button>
+            <button (click)="reservarLibro(libro.key$)" type="button" class="btn btn-outline-primary btn-block">Reservar</button>
+            <button [routerLink]="['/editarLibro', libro.key$]" type="button" class="btn btn-outline-primary btn-block">Editar</button>
+            <button (click)="borrarLibro(libro.key$)" type="button" class="btn btn-outline-primary btn-block">Eliminar</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+<div style="margin-top: 100px">
+    <div class="row">
+        <div class="col-lg-11">
+            <input class="form-control " type="search" placeholder="Buscar libro" (keyup.enter)="buscarLibro(buscarTexto.value)" #buscarTexto>
+        </div>
+        <div class="col-lg-1">
+            <button style="height: 48px" (click)="buscarLibro(buscarTexto.value)" class="btn btn-outline-primary " type="button"> Buscar </button>
+        </div>
+    </div>
+</div>
+
+<div class="card-columns" style="margin-top: 50px">
+
+    <app-tarjeta [libros]="libros"></app-tarjeta>
+</div>
