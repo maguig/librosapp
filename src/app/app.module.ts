@@ -7,8 +7,9 @@ import { APP_ROUTING } from "./app.routes";
 import { AppRoutingModule } from "./app-routing.module";
 
 //Servicios
-import { LibrosService } from "./services/libros.service";
+import { LibrosService } from "./Services/libros.service";
 import { UsuarioService } from "./services/usuario.service";
+import { AuthService } from "./services/auth.service";
 import { LibrosPedidosService } from "./services/libros-pedidos.service";
 
 //Componentes
@@ -54,7 +55,7 @@ import { RegistrarseComponent } from "./components/ingresar/registrarse/registra
     FormsModule,
     HttpClientModule
   ],
-  providers: [LibrosService, LibrosPedidosService, UsuarioService],
+  providers: [LibrosService, LibrosPedidosService, UsuarioService, AuthService],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

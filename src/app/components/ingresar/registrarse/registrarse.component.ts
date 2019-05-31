@@ -25,7 +25,7 @@ export class RegistrarseComponent implements OnInit {
     };
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   crearSiNoExiste(usuario: Usuario) {
     this.usuarioService.obtenerUsuarios().subscribe((data: Array<any>) => {
@@ -43,7 +43,7 @@ export class RegistrarseComponent implements OnInit {
         this.usuarioService
           .nuevoUsuario(usuario)
           .subscribe(d => console.log(d), e => console.log(e));
-        this.router.navigate(["/catalogo"]);
+        this.router.navigate(["/login"]);
       }
     });
   }

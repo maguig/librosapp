@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { LibrosService } from "../../services/libros.service";
+import { LibrosService } from "../../Services/libros.service";
 import { Libro } from "../../model/libro.model";
 import { ActivatedRoute, Router } from "@angular/router";
 

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
-import { LibrosService } from "../../services/libros.service";
+import { LibrosService } from "../../Services/libros.service";
 import { Libro } from "../../model/libro.model";
 import { LibroPedido } from "../../model/libroPedido.model";
 import { LibrosPedidosService } from "../../services/libros-pedidos.service";
@@ -21,8 +21,8 @@ export class TarjetaComponent implements OnInit {
     private librosService: LibrosService,
     private pedidosService: LibrosPedidosService,
     private activatedRoute: ActivatedRoute
-  ) {}
-  ngOnInit() {}
+  ) { }
+  ngOnInit() { }
   borrarLibro(key$: string) {
     this.librosService.borrarLibro(key$).subscribe(error => {
       if (error) {

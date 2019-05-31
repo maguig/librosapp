@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Router, ActivatedRoute } from "@angular/router";
 import { Libro } from "../../../../model/libro.model";
-import { LibrosService } from "../../../../services/libros.service";
+import { LibrosService } from "../../../../Services/libros.service";
 @Component({
   selector: "app-editar-libro",
   templateUrl: "./editar-libro.component.html",

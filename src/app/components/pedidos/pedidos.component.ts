@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { Libro } from "../../model/libro.model";
-import { LibrosService } from "../../services/libros.service";
+import { LibrosService } from "../../Services/libros.service";
 import { LibroPedido } from "../../model/libroPedido.model";
 import { LibrosPedidosService } from "../../services/libros-pedidos.service";
 @Component({
@@ -18,6 +18,6 @@ export class PedidosComponent implements OnInit {
     private pedidosService: LibrosPedidosService,
     private librosService: LibrosService,
     private activatedRoute: ActivatedRoute
-  ) {}
-  ngOnInit() {}
+  ) { }
+  ngOnInit() { }
 }

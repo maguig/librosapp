@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { Usuario } from "../../../model/usuario.model";
 import { UsuarioService } from "../../../services/usuario.service";
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: "app-login",
@@ -10,9 +11,11 @@ import { UsuarioService } from "../../../services/usuario.service";
 })
 export class LoginComponent implements OnInit {
   usuario: Usuario = null;
-  existeUser = false;
+  existeUser = true;
+  passwordIncorrecto: boolean = false;
   constructor(
     private usuarioService: UsuarioService,
+    private authService: AuthService,
     private router: Router,
     private route: ActivatedRoute
   ) {
@@ -25,7 +28,7 @@ export class LoginComponent implements OnInit {
     };
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   ingresarSiEstaRegistrado(usuario: Usuario) {
     this.usuarioService.obtenerUsuarios().subscribe((data: Array<any>) => {
@@ -33,11 +36,25 @@ export class LoginComponent implements OnInit {
 
       if (data) {
         Usuario.convertToArray(data).forEach(usr => {
-          if (usr.mail !== usuario.mail) {
+
+          //Primero valido que el user exista
+          if (usr.mail === usuario.mail) {
+            //El usuario existe
             this.existeUser = true;
-          } else {
-            this.router.navigate(["/catalogo"]);
+
+            //Luego valido que el usuario haya ingresado la contraseña correcta
+            if (usr.contrasena === usuario.contrasena) {
+              //hago login del usuario (lo guardo en sesion)
+              this.authService.login(usr);
+
+              //llevo al usuario autenticado al catalogo
+              this.router.navigate(["/catalogo"]);
+            }
+            else {
+              this.passwordIncorrecto = true;
+            }
           }
+
         });
       }
     });

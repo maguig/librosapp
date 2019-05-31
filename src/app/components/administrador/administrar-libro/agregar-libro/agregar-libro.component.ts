@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { Libro } from "../../../../model/libro.model";
-import { LibrosService } from "../../../../services/libros.service";
+import { LibrosService } from "../../../../Services/libros.service";
 @Component({
   selector: "app-agregar-libro",
   templateUrl: "./agregar-libro.component.html",
@@ -27,7 +27,7 @@ export class AgregarLibroComponent implements OnInit {
     };
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   guardarCambios() {
     console.log(this.libro);

@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { LibrosService } from "../../services/libros.service";
+import { LibrosService } from "../../Services/libros.service";
 import { Libro } from "src/app/model/libro.model";
 
 @Component({
@@ -21,5 +21,5 @@ export class InicioComponent implements OnInit {
     // });
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 }

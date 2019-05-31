@@ -8,7 +8,9 @@ import { Usuario } from "../model/usuario.model";
 export class UsuarioService {
   usuariosURL = "https://usuario-e59c7.firebaseio.com/usuario.json";
   usuarioURL = "https://usuario-e59c7.firebaseio.com/usuario";
-  constructor(private http: HttpClient) {}
+  usuarioLogueado: Usuario = null;
+
+  constructor(private http: HttpClient) { }
 
   nuevoUsuario(usuario: Usuario) {
     let body = JSON.stringify(usuario);
@@ -47,24 +49,21 @@ export class UsuarioService {
     return this.http.delete(url);
   }
 
-  // crearSiNoExiste(usuario: Usuario) {
-  //   this.obtenerUsuarios().subscribe((data: Array<any>) => {
-  //     let existeUser = false;
+  login(usuario: Usuario) {
+    this.usuarioLogueado = usuario;
+  }
 
-  //     if (data) {
-  //       Usuario.convertToArray(data).forEach(usr => {
-  //         if (usr.mail === usuario.mail) {
-  //           existeUser = true;
-  //         }
-  //       });
-  //     }
+  logout() {
+    this.usuarioLogueado = null;
+  }
 
-  //     if (existeUser == false) {
-  //       this.nuevoUsuario(usuario).subscribe(
-  //         d => console.log(d),
-  //         e => console.log(e)
-  //       );
-  //     }
-  //   });
-  // }
+  isAuthenticated(): boolean {
+    if (this.usuarioLogueado === null) {
+      return false;
+    }
+    else {
+      return true;
+    }
+  }
+
 }

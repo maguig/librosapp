@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { Libro } from "../../../model/libro.model";
-import { LibrosService } from "../../../services/libros.service";
+import { LibrosService } from "../../../Services/libros.service";
 
 @Component({
   selector: "app-administrador-libro",
@@ -12,7 +12,7 @@ export class AdministradorLibroComponent implements OnInit {
   todosLosLibros: Libro[];
   libros: Libro[];
   libro: Libro = null;
-  constructor(private librosService: LibrosService, private router: Router) {}
+  constructor(private librosService: LibrosService, private router: Router) { }
   ngOnInit() {
     this.librosService
       .obtenerLibros()

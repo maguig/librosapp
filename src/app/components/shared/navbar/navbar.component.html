@@ -1,9 +1,10 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
     <img src="assets/img/logo.png" alt="" />
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
@@ -13,8 +14,9 @@
             </li>
 
 
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Administrador</a>
+            <li class="nav-item dropdown" *ngIf="authService.isAdmin()">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false"> Administrador</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" [routerLink]="['administradorLibro']">Administracion de libros</a>
                     <a class="dropdown-item" [routerLink]="['usuarioAdm']">Usuarios</a>
@@ -23,10 +25,17 @@
                 </div>
             </li>
         </ul>
-        <a style="color:#007bff;padding-left: 0px;font-size: 25px" class="nav-link" [routerLink]="['pedidos']"> <i class="fas fa-book-reader"></i> 0</a>
+        <span>{{authService.usuarioLogueado?.mail}}</span>
+        <a style="color:#007bff;padding-left: 0px;font-size: 25px" class="nav-link" [routerLink]="['pedidos']"> <i
+                class="fas fa-book-reader"></i> 0</a>
 
-        <button style="margin-right: 5px" class="btn btn-outline-primary btn-sm" [routerLink]="['registrarse']"> Registrarse</button>
-        <button class="btn btn-outline-primary btn-sm" [routerLink]="['login']"> Iniciar sesión</button>
-        <button style="display: none" class="btn btn-outline-primary btn-sm">Salir</button>
+
+        <button style="margin-right: 5px" class="btn btn-outline-primary btn-sm" [routerLink]="['registrarse']"
+            *ngIf="!authService.isAuthenticated()"> Registrarse</button>
+        <button class="btn btn-outline-primary btn-sm" [routerLink]="['login']" *ngIf="!authService.isAuthenticated()">
+            Iniciar
+            sesión</button>
+        <button class="btn btn-outline-primary btn-sm" *ngIf="authService.isAuthenticated()"
+            (click)="authService.logout()">Salir</button>
     </div>
 </nav>
