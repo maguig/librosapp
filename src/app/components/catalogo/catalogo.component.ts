@@ -29,7 +29,7 @@ export class CatalogoComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   buscarLibro(termino: string) {
     this.libros = [];

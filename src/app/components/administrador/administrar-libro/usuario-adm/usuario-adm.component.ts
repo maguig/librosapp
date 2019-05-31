@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Usuario } from "../../../../model/usuario.model";
-import { UsuarioService } from "src/app/services/usuario.service";
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: "app-usuario-adm",
@@ -12,7 +12,7 @@ export class UsuarioAdmComponent implements OnInit {
   usuarios: Usuario[];
   usuario: Usuario = null;
 
-  constructor(private usuarioService: UsuarioService) {}
+  constructor(private usuarioService: UsuarioService) { }
 
   ngOnInit() {
     this.usuarioService
