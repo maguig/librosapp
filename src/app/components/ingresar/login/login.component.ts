@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { Usuario } from "../../../model/usuario.model";
 import { UsuarioService } from "../../../services/usuario.service";
 import { AuthService } from 'src/app/services/auth.service';
+import { LibrosPedidosService } from 'src/app/services/libros-pedidos.service';
 
 @Component({
   selector: "app-login",
@@ -16,6 +17,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private usuarioService: UsuarioService,
     private authService: AuthService,
+    private pedidosService: LibrosPedidosService,
     private router: Router,
     private route: ActivatedRoute
   ) {
@@ -46,6 +48,9 @@ export class LoginComponent implements OnInit {
             if (usr.contrasena === usuario.contrasena) {
               //hago login del usuario (lo guardo en sesion)
               this.authService.login(usr);
+
+              //actualizo la cantidad de pedidos totales del usuario par amostrar en el navbar
+              this.pedidosService.actualizarTotalPedidosUsuario();
 
               //llevo al usuario autenticado al catalogo
               this.router.navigate(["/catalogo"]);

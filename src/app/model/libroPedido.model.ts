@@ -3,10 +3,16 @@ export class LibroPedido {
   idLibro: string;
   fechaReserva: number;
   estado: string;
-  cantidadPedida: number;
-  Key$?: string;
+  key$?: string;
 
-  static convertToArray = function(objectoFirebase): any[] {
+  constructor(idUsuario: string, idLibro: string) {
+    this.idUsuario = idUsuario;
+    this.idLibro = idLibro;
+    this.fechaReserva = Date.now();
+    this.estado = "pendiente"
+  }
+
+  static convertToArray = function (objectoFirebase): any[] {
     return Object.keys(objectoFirebase).map(key => {
       var obj = objectoFirebase[key];
       obj.key$ = key;

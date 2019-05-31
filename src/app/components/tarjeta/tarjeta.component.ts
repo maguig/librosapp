@@ -4,6 +4,7 @@ import { LibrosService } from "../../Services/libros.service";
 import { Libro } from "../../model/libro.model";
 import { LibroPedido } from "../../model/libroPedido.model";
 import { LibrosPedidosService } from "../../services/libros-pedidos.service";
+import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: "app-tarjeta",
   templateUrl: "./tarjeta.component.html",
@@ -20,6 +21,7 @@ export class TarjetaComponent implements OnInit {
     private router: Router,
     private librosService: LibrosService,
     private pedidosService: LibrosPedidosService,
+    private authService: AuthService,
     private activatedRoute: ActivatedRoute
   ) { }
   ngOnInit() { }
@@ -44,6 +46,20 @@ export class TarjetaComponent implements OnInit {
   }
 
   reservarLibro(idLibro: string) {
-    console.log(idLibro);
+
+    if (this.authService.isAuthenticated()) {
+      var idUsuario = this.authService.usuarioLogueado.key$;
+      var reserva = new LibroPedido(idUsuario, idLibro);
+      this.pedidosService.nuevoPedido(reserva).subscribe(d => {
+        console.log(d);
+        this.pedidosService.actualizarTotalPedidosUsuario();
+        alert("Se ha registrado su reserva. Por favor confirmar las reservas para iniciar el envio.");
+      }, e => console.log(e));
+    }
+    else {
+      alert("Primero debe hacer login para poder reservar!");
+      this.router.navigate(["/login"]);
+
+    }
   }
 }

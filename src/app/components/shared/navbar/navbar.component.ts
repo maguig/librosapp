@@ -3,6 +3,8 @@ import { Router } from "@angular/router";
 import { Usuario } from "../../../model/usuario.model";
 import { UsuarioService } from "../../../services/usuario.service";
 import { AuthService } from 'src/app/services/auth.service';
+import { LibrosPedidosService } from 'src/app/services/libros-pedidos.service';
+
 @Component({
   selector: "app-navbar",
   templateUrl: "./navbar.component.html",
@@ -15,14 +17,8 @@ export class NavbarComponent {
   username: string = "";
   userPicture: string = "";
 
-  constructor(private router: Router, public authService: AuthService) { }
+  constructor(private router: Router, public authService: AuthService, public pedidoService: LibrosPedidosService) { }
 
   ngOnInit() { }
 
-  hayUsuarioLogueado(): boolean {
-    if (this.authService.isAuthenticated() == true)
-      return true;
-
-    return false;
-  }
 }

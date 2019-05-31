@@ -27,7 +27,7 @@
         </ul>
         <span>{{authService.usuarioLogueado?.mail}}</span>
         <a style="color:#007bff;padding-left: 0px;font-size: 25px" class="nav-link" [routerLink]="['pedidos']"> <i
-                class="fas fa-book-reader"></i> 0</a>
+                class="fas fa-book-reader"></i> {{pedidoService.totalPedidosUsuario}}</a>
 
 
         <button style="margin-right: 5px" class="btn btn-outline-primary btn-sm" [routerLink]="['registrarse']"
