@@ -2,8 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { Usuario } from "../../../model/usuario.model";
 import { UsuarioService } from "../../../services/usuario.service";
-import { AuthService } from 'src/app/services/auth.service';
-import { LibrosPedidosService } from 'src/app/services/libros-pedidos.service';
+import { AuthService } from "src/app/services/auth.service";
+import { LibrosPedidosService } from "src/app/services/libros-pedidos.service";
 
 @Component({
   selector: "app-login",
@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
     };
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   ingresarSiEstaRegistrado(usuario: Usuario) {
     this.usuarioService.obtenerUsuarios().subscribe((data: Array<any>) => {
@@ -38,30 +38,59 @@ export class LoginComponent implements OnInit {
 
       if (data) {
         Usuario.convertToArray(data).forEach(usr => {
-
           //Primero valido que el user exista
           if (usr.mail === usuario.mail) {
             //El usuario existe
             this.existeUser = true;
 
             //Luego valido que el usuario haya ingresado la contraseña correcta
-            if (usr.contrasena === usuario.contrasena) {
-              //hago login del usuario (lo guardo en sesion)
-              this.authService.login(usr);
 
-              //actualizo la cantidad de pedidos totales del usuario par amostrar en el navbar
-              this.pedidosService.actualizarTotalPedidosUsuario();
+            //hago login del usuario (lo guardo en sesion)
+            this.authService.login(usr);
 
-              //llevo al usuario autenticado al catalogo
-              this.router.navigate(["/catalogo"]);
-            }
-            else {
-              this.passwordIncorrecto = true;
-            }
+            //actualizo la cantidad de pedidos totales del usuario par amostrar en el navbar
+            this.pedidosService.actualizarTotalPedidosUsuario();
+
+            //llevo al usuario autenticado al catalogo
+            this.router.navigate(["/catalogo"]);
+          } else {
+            this.passwordIncorrecto = true;
           }
-
         });
       }
     });
   }
 }
+
+// ingresarSiEstaRegistrado(usuario: Usuario) {
+//     this.usuarioService.obtenerUsuarios().subscribe((data: Array<any>) => {
+//       this.existeUser = false;
+
+//       if (data) {
+//         Usuario.convertToArray(data).forEach(usr => {
+
+//           //Primero valido que el user exista
+//           if (usr.mail === usuario.mail) {
+//             //El usuario existe
+//             this.existeUser = true;
+
+//             //Luego valido que el usuario haya ingresado la contraseña correcta
+//             if (usr.contrasena === usuario.contrasena) {
+//               //hago login del usuario (lo guardo en sesion)
+//               this.authService.login(usr);
+
+//               //actualizo la cantidad de pedidos totales del usuario par amostrar en el navbar
+//               this.pedidosService.actualizarTotalPedidosUsuario();
+
+//               //llevo al usuario autenticado al catalogo
+//               this.router.navigate(["/catalogo"]);
+//             }
+//             else {
+//               this.passwordIncorrecto = true;
+//             }
+//           }
+
+//         });
+//       }
+//     });
+//   }

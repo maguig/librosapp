@@ -1,9 +1,7 @@
 import { Component } from "@angular/core";
+import { AuthService } from "src/app/services/auth.service";
+import { LibrosPedidosService } from "src/app/services/libros-pedidos.service";
 import { Router } from "@angular/router";
-import { Usuario } from "../../../model/usuario.model";
-import { UsuarioService } from "../../../services/usuario.service";
-import { AuthService } from 'src/app/services/auth.service';
-import { LibrosPedidosService } from 'src/app/services/libros-pedidos.service';
 
 @Component({
   selector: "app-navbar",
@@ -11,14 +9,20 @@ import { LibrosPedidosService } from 'src/app/services/libros-pedidos.service';
   styleUrls: ["./navbar.component.css"]
 })
 export class NavbarComponent {
-  agregar: boolean = false;
-  profile: any;
-  usuario: Usuario[] = [];
-  username: string = "";
-  userPicture: string = "";
+  totalPedidosUsuario: number = 0;
 
-  constructor(private router: Router, public authService: AuthService, public pedidoService: LibrosPedidosService) { }
+  constructor(
+    private router: Router,
+    public authService: AuthService,
+    public pedidoService: LibrosPedidosService
+  ) {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 
+  logout() {
+    this.authService.logout();
+    this.pedidoService.totalPedidosUsuario = 0;
+    console.log(this.totalPedidosUsuario);
+    this.router.navigateByUrl("/catalogo");
+  }
 }

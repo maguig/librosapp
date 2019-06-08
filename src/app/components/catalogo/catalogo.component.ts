@@ -11,7 +11,6 @@ import { ActivatedRoute, Router } from "@angular/router";
 export class CatalogoComponent implements OnInit {
   libros: Libro[] = [];
   todosLosLibros: Libro[];
-  profile: any;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -29,7 +28,7 @@ export class CatalogoComponent implements OnInit {
     });
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   buscarLibro(termino: string) {
     this.libros = [];

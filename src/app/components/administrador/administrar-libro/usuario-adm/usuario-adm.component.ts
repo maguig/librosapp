@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Usuario } from "../../../../model/usuario.model";
-import { UsuarioService } from 'src/app/services/usuario.service';
+import { UsuarioService } from "src/app/services/usuario.service";
 
 @Component({
   selector: "app-usuario-adm",
@@ -12,7 +12,7 @@ export class UsuarioAdmComponent implements OnInit {
   usuarios: Usuario[];
   usuario: Usuario = null;
 
-  constructor(private usuarioService: UsuarioService) { }
+  constructor(private usuarioService: UsuarioService) {}
 
   ngOnInit() {
     this.usuarioService
@@ -24,16 +24,6 @@ export class UsuarioAdmComponent implements OnInit {
         },
         error => console.error(error)
       );
-
-    this.usuarioService.obtenerUsuarios().subscribe(data => {
-      console.log(data);
-
-      if (data) {
-        let arrData = Usuario.convertToArray(data);
-        this.todosLosUsuarios = arrData;
-        this.usuarios = arrData;
-      }
-    });
   }
 
   buscarPorId(id: string) {

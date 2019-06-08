@@ -6,11 +6,10 @@
             <p class="card-text">
                 <small class="text-primary"> {{ libro.autor }} </small>
             </p>
-
             <button (click)="verLibro(libro.key$)" class="btn btn-outline-primary btn-block">Ver más... </button>
-            <button (click)="reservarLibro(libro.key$)" type="button" class="btn btn-outline-primary btn-block">Reservar</button>
-            <button [routerLink]="['/editarLibro', libro.key$]" type="button" class="btn btn-outline-primary btn-block">Editar</button>
-            <button (click)="borrarLibro(libro.key$)" type="button" class="btn btn-outline-primary btn-block">Eliminar</button>
+            <button (click)="reservarLibro(libro.key$,libro.img,libro.nombre)" type="button" class="btn btn-outline-primary btn-block" *ngIf="authService.isAuthenticated()">Reservar</button>
+            <button [routerLink]="['/editarLibro', libro.key$]" type="button" class="btn btn-outline-primary btn-block" *ngIf="authService.isAdmin()">Editar</button>
+            <button (click)="borrarLibro(libro.key$)" type="button" class="btn btn-outline-primary btn-block" *ngIf="authService.isAdmin()">Eliminar</button>
         </div>
     </div>
 </div>

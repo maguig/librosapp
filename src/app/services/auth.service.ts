@@ -1,5 +1,4 @@
 import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Usuario } from "../model/usuario.model";
 
 @Injectable({
@@ -7,8 +6,6 @@ import { Usuario } from "../model/usuario.model";
 })
 export class AuthService {
   usuarioLogueado: Usuario = null;
-
-  constructor() { }
 
   login(usuario: Usuario) {
     this.usuarioLogueado = usuario;
@@ -21,8 +18,7 @@ export class AuthService {
   isAuthenticated(): boolean {
     if (this.usuarioLogueado === null) {
       return false;
-    }
-    else {
+    } else {
       return true;
     }
   }
@@ -31,8 +27,6 @@ export class AuthService {
     if (this.isAuthenticated() && this.usuarioLogueado.administrador === true) {
       return true;
     }
-
     return false;
   }
-
 }

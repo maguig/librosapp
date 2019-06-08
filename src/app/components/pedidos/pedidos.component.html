@@ -3,49 +3,43 @@
 
     <div class="container">
 
-        <h1 class="Titulo1"> Reserva de Magali </h1>
+        <h1 class="Titulo1"> Reservas</h1>
         <br>
         <div class="row " *ngFor="let pedido of pedidos">
             <div class="col-md-2">
-                <img [src]="pedido.img ">
+                <img [src]="pedido.imgLibro">
             </div>
 
             <div class="col-md-2">
                 <p><small class="text-primary ">Producto</small></p>
-                <p class="text-secondary ">{{pedido.nombre}} </p>
+                <p class="text-secondary "> {{pedido.nombreLibro}} </p>
             </div>
 
             <div class="col-md-2">
                 <p> <small class="text-primary ">Fecha de reserva</small></p>
-                <small class="text-secondary "> {{pedido.fechaReserva}} </small>
+                <small class="text-secondary "> {{pedido.fechaReserva | date}} </small>
             </div>
 
             <div class="col-md-2">
-                <p> <small class="text-primary ">Fecha de devolucion</small></p>
-                <small class="text-secondary "> {{pedido.fechaDevolucion}} </small>
+                <p> <small class="text-primary">Fecha de devolucion</small></p>
+                <small class="text-secondary"> {{getFechaDevolucion(pedido) | date}}</small>
             </div>
 
             <div class="col-md-2">
-                <p> <small class="text-primary ">Cantidad</small></p>
-                <select class="form-control">
-                    <option> {{pedido.cantidadPedida}} </option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                </select>
+                <p> <small class="text-primary">Cantidad</small></p>
+                <small class="text-secondary"> 1 </small>
             </div>
             <div class="col-md-2">
-                <button style="font-size: 12px;margin-top: 41px" class="btn btn-outline-danger"><i class="far fa-trash-alt"></i></button>
+                <button (click)="borrarPedido(pedido.key$)" style="font-size: 12px;margin-top: 41px" class="btn btn-outline-danger"><i class="far fa-trash-alt"></i></button>
             </div>
         </div>
 
         <div class="row ">
             <div class="col-md-6">
-                <button type="button " class="btn btn-outline-primary btn-block "> Volver atrás</button>
+                <button type="button " class="btn btn-outline-primary btn-block" (click)="volver()"> Volver atrás</button>
             </div>
             <div class="col-md-6">
-                <button type="button " class="btn btn-outline-primary btn-block "> Confirmar reserva</button>
+                <button type="button " class="btn btn-outline-primary btn-block" (click)="confirmarReserva()"> Confirmar reserva</button>
             </div>
         </div>
     </div>

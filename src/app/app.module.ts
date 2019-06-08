@@ -21,7 +21,6 @@ import { InicioComponent } from "./components/inicio/inicio.component";
 import { TarjetaComponent } from "./components/tarjeta/tarjeta.component";
 import { PedidosComponent } from "./components/pedidos/pedidos.component";
 import { UsuarioAdmComponent } from "./components/administrador/administrar-libro/usuario-adm/usuario-adm.component";
-import { ReservasPendientesComponent } from "./components/administrador/administrar-libro/reservas-pendientes/reservas-pendientes.component";
 import { PedidosActivosComponent } from "./components/administrador/administrar-libro/pedidos-activos/pedidos-activos.component";
 import { EditarLibroComponent } from "./components/administrador/administrar-libro/editar-libro/editar-libro.component";
 import { AgregarLibroComponent } from "./components/administrador/administrar-libro/agregar-libro/agregar-libro.component";
@@ -29,6 +28,7 @@ import { AdministradorLibroComponent } from "./components/administrador/administ
 import { FooterComponent } from "./components/shared/footer/footer.component";
 import { LoginComponent } from "./components/ingresar/login/login.component";
 import { RegistrarseComponent } from "./components/ingresar/registrarse/registrarse.component";
+import { ReservasComponent } from "./components/administrador/administrar-libro/reservas/reservas.component";
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,14 +39,14 @@ import { RegistrarseComponent } from "./components/ingresar/registrarse/registra
     TarjetaComponent,
     PedidosComponent,
     UsuarioAdmComponent,
-    ReservasPendientesComponent,
     PedidosActivosComponent,
     EditarLibroComponent,
     AgregarLibroComponent,
     AdministradorLibroComponent,
     FooterComponent,
     LoginComponent,
-    RegistrarseComponent
+    RegistrarseComponent,
+    ReservasComponent
   ],
   imports: [
     BrowserModule,
@@ -58,4 +58,4 @@ import { RegistrarseComponent } from "./components/ingresar/registrarse/registra
   providers: [LibrosService, LibrosPedidosService, UsuarioService, AuthService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

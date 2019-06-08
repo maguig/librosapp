@@ -1,8 +1,7 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <img src="assets/img/logo.png" alt="" />
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -15,27 +14,23 @@
 
 
             <li class="nav-item dropdown" *ngIf="authService.isAdmin()">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false"> Administrador</a>
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Administrador</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" [routerLink]="['administradorLibro']">Administracion de libros</a>
                     <a class="dropdown-item" [routerLink]="['usuarioAdm']">Usuarios</a>
-                    <a class="dropdown-item" [routerLink]="['reservasPendientes']">Reservas pendientes</a>
+                    <a class="dropdown-item" [routerLink]="['reservas']">Reservas confirmadas</a>
                     <a class="dropdown-item" [routerLink]="['pedidosActivos']">Pedidos activos</a>
                 </div>
             </li>
         </ul>
-        <span>{{authService.usuarioLogueado?.mail}}</span>
-        <a style="color:#007bff;padding-left: 0px;font-size: 25px" class="nav-link" [routerLink]="['pedidos']"> <i
-                class="fas fa-book-reader"></i> {{pedidoService.totalPedidosUsuario}}</a>
+        <span style="margin-right: 20px;margin-top: 7px; color:white">{{authService.usuarioLogueado?.nombre}}</span>
+        <a style="color:white;padding-left: 0px;font-size: 20px" class="nav-link" [routerLink]="['pedido','']"> <i class="fas fa-shopping-cart"></i> {{pedidoService.totalPedidosUsuario}}</a>
 
 
-        <button style="margin-right: 5px" class="btn btn-outline-primary btn-sm" [routerLink]="['registrarse']"
-            *ngIf="!authService.isAuthenticated()"> Registrarse</button>
-        <button class="btn btn-outline-primary btn-sm" [routerLink]="['login']" *ngIf="!authService.isAuthenticated()">
+        <button style="margin-right: 5px" class="btn btn-outline-light btn-sm" [routerLink]="['registrarse']" *ngIf="!authService.isAuthenticated()"> Registrarse</button>
+        <button class="btn btn-outline-light btn-sm" [routerLink]="['login']" *ngIf="!authService.isAuthenticated()">
             Iniciar
             sesión</button>
-        <button class="btn btn-outline-primary btn-sm" *ngIf="authService.isAuthenticated()"
-            (click)="authService.logout()">Salir</button>
+        <button class="btn btn-outline-light btn-sm" *ngIf="authService.isAuthenticated()" (click)="logout()">Salir</button>
     </div>
 </nav>
