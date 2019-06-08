@@ -15,7 +15,7 @@ export class PedidosComponent implements OnInit {
   pedidos: LibroPedido[];
   pedido: LibroPedido;
   usuario: Usuario;
-  pedidosPendientes: [] = [];
+  librosPedidos: LibroPedido[] = [];
   constructor(
     private usuarioService: UsuarioService,
     public pedidosService: LibrosPedidosService,
@@ -27,15 +27,11 @@ export class PedidosComponent implements OnInit {
     this.pedidosService.obtenerPedidos().subscribe(data => {
       this.pedidos = LibroPedido.convertToArray(data);
       this.pedidos.forEach(pedido => {
-        console.log(this.pedido);
-
-        if (pedido.estado === "pendiente") {
-          // this.pedidosPendientes.push(pedido)
+        if (pedido.idUsuario === this.authService.usuarioLogueado.key$) {
+          this.librosPedidos.push(pedido);
         }
       });
-      // if (this.pedidos.estado === "pendiente") {
-      //   console.log(this.pedidos.estado);
-      // }
+      this.pedidos = this.librosPedidos;
     });
   }
 
