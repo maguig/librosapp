@@ -11,18 +11,22 @@ import { LibroPedido } from "src/app/model/libroPedido.model";
 export class ReservasComponent implements OnInit {
   pedidos: LibroPedido[] = [];
   pedido: LibroPedido = null;
+  pedidosConfirmados: LibroPedido[] = [];
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private pedidosService: LibrosPedidosService
   ) {}
   ngOnInit() {
-    this.pedidosService.obtenerPedidos().subscribe(
-      data => {
-        this.pedidos = LibroPedido.convertToArray(data);
-      },
-      error => console.error(error)
-    );
+    this.pedidosService.obtenerPedidos().subscribe(data => {
+      this.pedidos = LibroPedido.convertToArray(data);
+      this.pedidos.forEach(pedido => {
+        if (pedido.estado === "confirmado") {
+          this.pedidosConfirmados.push(pedido);
+        }
+      });
+      this.pedidos = this.pedidosConfirmados;
+    });
   }
   pedidoAceptado(pedido: LibroPedido) {
     this.pedidosService.obtenerPedido(pedido.key$).subscribe(data => {
