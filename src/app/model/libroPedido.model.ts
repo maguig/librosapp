@@ -1,22 +1,12 @@
 export class LibroPedido {
   idUsuario: string;
-  nombreUsuario: string;
   imgLibro: string;
-  nombreLibro: string;
   idLibro: string;
   fechaReserva?: Date;
   estado: string;
   key$?: string;
 
-  constructor(
-    idUsuario: string,
-    idLibro: string,
-    imgLibro: string,
-    nombreLibro: string,
-    nombreUsuario: string
-  ) {
-    this.nombreUsuario = nombreUsuario;
-    this.nombreLibro = nombreLibro;
+  constructor(idUsuario: string, idLibro: string, imgLibro: string) {
     this.imgLibro = imgLibro;
     this.idUsuario = idUsuario;
     this.idLibro = idLibro;

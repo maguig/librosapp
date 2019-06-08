@@ -48,14 +48,8 @@ export class TarjetaComponent implements OnInit {
   reservarLibro(idLibro: string, imgLibro: string, nombreLibro: string) {
     if (this.authService.isAuthenticated()) {
       var idUsuario = this.authService.usuarioLogueado.key$;
-      var nombreUsuario = this.authService.usuarioLogueado.nombre;
-      var reserva = new LibroPedido(
-        idUsuario,
-        idLibro,
-        imgLibro,
-        nombreLibro,
-        nombreUsuario
-      );
+      //  /   var nombreUsuario = this.authService.usuarioLogueado.nombre;
+      var reserva = new LibroPedido(idUsuario, idLibro, imgLibro);
       this.pedidosService.nuevoPedido(reserva).subscribe(
         d => {
           console.log(d);
