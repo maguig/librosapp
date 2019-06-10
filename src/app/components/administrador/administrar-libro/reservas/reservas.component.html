@@ -21,9 +21,8 @@
             <thead>
                 <tr>
                     <th scope="col">Nombre Usuario</th>
-                    <th scope="col">IdUsuario</th>
+                    <th scope="col">Mail Usuario</th>
                     <th scope="col">Nombre Libro</th>
-                    <th scope="col">IdLibro</th>
                     <th scope="col">Fecha de reserva</th>
                     <th scope="col">Estado de la reserva</th>
                     <th scope="col">Acciones</th>
@@ -33,9 +32,8 @@
             <tbody>
                 <tr *ngFor="let pedido of pedidos">
                     <td> {{pedido.nombreUsuario}} </td>
-                    <td> {{pedido.idUsuario}} </td>
+                    <td> {{pedido.mailUsuario}} </td>
                     <td> {{pedido.nombreLibro}} </td>
-                    <td> {{pedido.idLibro}} </td>
                     <td> {{pedido.fechaReserva|date}} </td>
                     <td> {{pedido.estado}} </td>
                     <td>

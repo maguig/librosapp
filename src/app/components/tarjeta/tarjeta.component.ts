@@ -49,9 +49,11 @@ export class TarjetaComponent implements OnInit {
     if (this.authService.isAuthenticated()) {
       var idUsuario = this.authService.usuarioLogueado.key$;
       var nombreUsuario = this.authService.usuarioLogueado.nombre;
+      var mailUsuario = this.authService.usuarioLogueado.mail;
       var reserva = new LibroPedido(
         idUsuario,
         idLibro,
+        mailUsuario,
         imgLibro,
         nombreLibro,
         nombreUsuario
