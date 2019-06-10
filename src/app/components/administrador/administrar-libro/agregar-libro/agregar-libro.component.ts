@@ -27,14 +27,14 @@ export class AgregarLibroComponent implements OnInit {
     };
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   guardarCambios() {
     console.log(this.libro);
 
     this.librosService.nuevoLibro(this.libro).subscribe(
       data => {
-        this.router.navigate(["/catalogo"]);
+        this.router.navigate(["/administradorLibro"]);
       },
       error => console.error(error)
     );

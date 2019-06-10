@@ -6,6 +6,7 @@ export class Libro {
   paginas: number;
   edicion: number;
   idioma: string;
+  stock?: number;
   key$?: string;
 
   static convertToArray = function(objectoFirebase): any[] {

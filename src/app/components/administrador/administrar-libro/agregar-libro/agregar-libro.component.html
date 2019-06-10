@@ -76,13 +76,24 @@
         </div>
 
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-6">
                 <div class="row">
-                    <div class="col-lg-1">
+                    <div class="col-lg-2">
                         <label>Reseña</label>
                     </div>
-                    <div class="col-lg-11">
+                    <div class="col-lg-10">
                         <input type="text" class="form-control" name="resena" [(ngModel)]="libro.resena">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="row">
+                    <div class="col-lg-2">
+                        <label>Stock</label>
+                    </div>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" name="stock" [(ngModel)]="libro.stock">
                     </div>
                 </div>
             </div>

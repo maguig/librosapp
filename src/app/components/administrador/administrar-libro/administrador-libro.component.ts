@@ -9,9 +9,9 @@ import { LibrosService } from "../../../Services/libros.service";
   styleUrls: ["./administrador-libro.component.css"]
 })
 export class AdministradorLibroComponent implements OnInit {
-  todosLosLibros: Libro[];
   libros: Libro[];
-  libro: Libro = null;
+  libroEncontrado: Libro[] = [];
+  librosSinStock: Libro[] = [];
   constructor(private librosService: LibrosService, private router: Router) {}
   ngOnInit() {
     this.librosService
@@ -37,29 +37,39 @@ export class AdministradorLibroComponent implements OnInit {
   }
 
   buscarLibro(termino: string) {
-    this.libros = [];
     termino = termino.toLowerCase();
 
-    for (let i = 0; i < this.todosLosLibros.length; i++) {
-      let libro = this.todosLosLibros[i];
+    for (let i = 0; i < this.libros.length; i++) {
+      let libro = this.libros[i];
 
       let nombre = libro.nombre.toLowerCase();
 
       if (nombre.indexOf(termino) >= 0) {
-        this.libros.push(libro);
+        this.libroEncontrado.push(libro);
       }
     }
+    this.libros = this.libroEncontrado;
   }
 
   verTodos() {
-    this.librosService
-      .obtenerLibros()
-      // .subscribe(this.cuandoRecibaLosLibros, this.cuandoFalleLaBusqueda);
-      .subscribe(
-        data => {
-          this.libros = Libro.convertToArray(data);
-        },
-        error => console.error(error)
-      );
+    this.librosService.obtenerLibros().subscribe(
+      data => {
+        this.libros = Libro.convertToArray(data);
+      },
+      error => console.error(error)
+    );
+  }
+
+  buscarSinStock() {
+    for (let i = 0; i < this.libros.length; i++) {
+      let libro = this.libros[i];
+
+      let stockLibro = this.libros[i].stock;
+
+      if (stockLibro == 0) {
+        this.librosSinStock.push(libro);
+      }
+    }
+    this.libros = this.librosSinStock;
   }
 }
