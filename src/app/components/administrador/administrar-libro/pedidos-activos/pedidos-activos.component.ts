@@ -45,4 +45,17 @@ export class PedidosActivosComponent implements OnInit {
 
     return fecha;
   }
+
+  insertarDevolucionLibro(pedido: LibroPedido) {
+    this.pedidosService.obtenerPedido(pedido.key$).subscribe(data => {
+      if (data) {
+        pedido.estado = "Devuelto";
+        this.pedidosService
+          .actualizarPedido(pedido, pedido.key$)
+          .subscribe(data => {
+            console.log(data);
+          });
+      }
+    });
+  }
 }
