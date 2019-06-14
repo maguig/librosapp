@@ -8,7 +8,8 @@ import { Libro } from "../model/libro.model";
 export class LibrosService {
   librosURL = "https://librosapp-dde26.firebaseio.com/libro.json";
   libroURL = "https://librosapp-dde26.firebaseio.com/libro";
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
+  stockLibro: number = 0;
 
   nuevoLibro(libro: Libro) {
     let body = JSON.stringify(libro);

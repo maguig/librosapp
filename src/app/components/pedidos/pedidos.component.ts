@@ -74,7 +74,7 @@ export class PedidosComponent implements OnInit {
   confirmarReserva() {
     for (let i = 0; i < this.pedidos.length; i++) {
       let libroPedido = this.pedidos[i];
-      libroPedido.estado = "confirmado";
+      libroPedido.estado = "Confirmado";
 
       this.pedidosService
         .actualizarPedido(libroPedido, libroPedido.key$)

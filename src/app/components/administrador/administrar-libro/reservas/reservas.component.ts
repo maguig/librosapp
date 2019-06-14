@@ -21,7 +21,7 @@ export class ReservasComponent implements OnInit {
     this.pedidosService.obtenerPedidos().subscribe(data => {
       this.pedidos = LibroPedido.convertToArray(data);
       this.pedidos.forEach(pedido => {
-        if (pedido.estado === "confirmado") {
+        if (pedido.estado === "Confirmado") {
           this.pedidosConfirmados.push(pedido);
         }
       });
@@ -31,7 +31,7 @@ export class ReservasComponent implements OnInit {
   pedidoAceptado(pedido: LibroPedido) {
     this.pedidosService.obtenerPedido(pedido.key$).subscribe(data => {
       if (data) {
-        pedido.estado = "aceptado";
+        pedido.estado = "Aceptado";
         this.pedidosService
           .actualizarPedido(pedido, pedido.key$)
           .subscribe(data => {

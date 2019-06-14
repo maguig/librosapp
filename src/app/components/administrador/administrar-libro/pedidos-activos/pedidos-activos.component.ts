@@ -23,7 +23,7 @@ export class PedidosActivosComponent implements OnInit {
       this.pedidos = LibroPedido.convertToArray(data);
 
       this.pedidos.forEach(pedido => {
-        if (pedido.estado === "aceptado") {
+        if (pedido.estado === "Aceptado") {
           this.pedidosAceptados.push(pedido);
         }
       });

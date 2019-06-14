@@ -2,6 +2,8 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { LibroPedido } from "../model/libroPedido.model";
 import { AuthService } from "./auth.service";
+import { LibrosService } from "./libros.service";
+import { Libro } from "../model/libro.model";
 
 @Injectable({
   providedIn: "root"
@@ -10,8 +12,13 @@ export class LibrosPedidosService {
   pedidosURL = "https://pedido-38b92.firebaseio.com/pedido.json";
   pedidoURL = "https://pedido-38b92.firebaseio.com/pedido";
   totalPedidosUsuario: number = 0;
-
-  constructor(private http: HttpClient, private authService: AuthService) {}
+  stockPedido: number = 0;
+  libro: Libro;
+  constructor(
+    private http: HttpClient,
+    private authService: AuthService,
+    private librosService: LibrosService
+  ) {}
 
   actualizarTotalPedidosUsuario() {
     this.obtenerPedidos().subscribe(data => {

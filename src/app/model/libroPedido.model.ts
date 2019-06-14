@@ -24,7 +24,7 @@ export class LibroPedido {
     this.idUsuario = idUsuario;
     this.idLibro = idLibro;
     this.fechaReserva = new Date(Date.now());
-    this.estado = "pendiente";
+    this.estado = "Pendiente";
   }
 
   static convertToArray = function(objectoFirebase): any[] {

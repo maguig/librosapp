@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { Libro } from "../../../model/libro.model";
 import { LibrosService } from "../../../Services/libros.service";
+import { LibrosPedidosService } from "src/app/services/libros-pedidos.service";
+import { LibroPedido } from "../../../model/libroPedido.model";
 
 @Component({
   selector: "app-administrador-libro",
@@ -9,20 +11,52 @@ import { LibrosService } from "../../../Services/libros.service";
   styleUrls: ["./administrador-libro.component.css"]
 })
 export class AdministradorLibroComponent implements OnInit {
-  libros: Libro[];
-  libroEncontrado: Libro[] = [];
-  librosSinStock: Libro[] = [];
-  constructor(private librosService: LibrosService, private router: Router) {}
+  libros: any[];
+
+  constructor(
+    public pedidosService: LibrosPedidosService,
+    private librosService: LibrosService
+  ) {}
   ngOnInit() {
-    this.librosService
-      .obtenerLibros()
-      // .subscribe(this.cuandoRecibaLosLibros, this.cuandoFalleLaBusqueda);
-      .subscribe(
-        data => {
-          this.libros = Libro.convertToArray(data);
-        },
-        error => console.error(error)
-      );
+    this.librosService.obtenerLibros().subscribe(
+      data => {
+        this.libros = Libro.convertToArray(data);
+
+        this.actualizarStockPorProducto(this.libros);
+      },
+      error => console.error(error)
+    );
+  }
+
+  actualizarStockPorProducto(libros: any[]) {
+    this.pedidosService.obtenerPedidos().subscribe(data => {
+      let pedidos = LibroPedido.convertToArray(data);
+
+      libros.forEach(libro => {
+        libro.stockDisponible = parseInt(libro.stock);
+
+        pedidos.forEach(pedido => {
+          if (pedido.estado === "Aceptado" && pedido.idLibro == libro.key$) {
+            libro.stockDisponible--;
+          } else if (
+            pedido.estado === "Devuelto" &&
+            pedido.idLibro == libro.key$
+          ) {
+            if (libro.stockDisponible > 200) {
+              libro.stockDisponible++;
+            }
+          }
+        });
+      });
+    });
+  }
+
+  getColor(libro) {
+    if (libro.stockDisponible === 20) {
+      return "orange";
+    } else if (libro.stockDisponible === 0) {
+      return "red";
+    }
   }
 
   borrarLibroAdm(key$: string) {
@@ -38,6 +72,7 @@ export class AdministradorLibroComponent implements OnInit {
 
   buscarLibro(termino: string) {
     termino = termino.toLowerCase();
+    let libroEncontrado = [];
 
     for (let i = 0; i < this.libros.length; i++) {
       let libro = this.libros[i];
@@ -45,10 +80,10 @@ export class AdministradorLibroComponent implements OnInit {
       let nombre = libro.nombre.toLowerCase();
 
       if (nombre.indexOf(termino) >= 0) {
-        this.libroEncontrado.push(libro);
+        libroEncontrado.push(libro);
       }
     }
-    this.libros = this.libroEncontrado;
+    this.libros = libroEncontrado;
   }
 
   verTodos() {
@@ -61,15 +96,18 @@ export class AdministradorLibroComponent implements OnInit {
   }
 
   buscarSinStock() {
+    let librosSinStock = [];
+
     for (let i = 0; i < this.libros.length; i++) {
       let libro = this.libros[i];
 
       let stockLibro = this.libros[i].stock;
 
       if (stockLibro == 0) {
-        this.librosSinStock.push(libro);
+        librosSinStock.push(libro);
       }
     }
-    this.libros = this.librosSinStock;
+
+    this.libros = librosSinStock;
   }
 }

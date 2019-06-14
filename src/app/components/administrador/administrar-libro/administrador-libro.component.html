@@ -29,6 +29,7 @@
                     <th scope="col">Nombre</th>
                     <th scope="col">Autor</th>
                     <th scope="col">Stock</th>
+                    <th style="text-align: center" scope="col">Stock Disponible</th>
                     <th scope="col">Acciones</th>
                 </tr>
             </thead>
@@ -37,6 +38,8 @@
                     <td> {{libro.nombre}} </td>
                     <td> {{libro.autor}} </td>
                     <td style="text-align: center"> {{libro.stock}} </td>
+
+                    <td style="text-align: center" [ngStyle]="{color: getColor(libro)}"> {{libro.stockDisponible}} </td>
                     <td>
                         <div class="row">
                             <div class="col-lg-6">
