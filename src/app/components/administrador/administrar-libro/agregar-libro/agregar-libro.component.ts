@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Router, ActivatedRoute } from "@angular/router";
+import { Router } from "@angular/router";
 import { Libro } from "../../../../model/libro.model";
 import { LibrosService } from "../../../../Services/libros.service";
 @Component({
@@ -9,13 +9,8 @@ import { LibrosService } from "../../../../Services/libros.service";
 })
 export class AgregarLibroComponent implements OnInit {
   libro: Libro = null;
-  // nuevo: boolean = false;
-  // id: string;
-  constructor(
-    private librosService: LibrosService,
-    private router: Router,
-    private route: ActivatedRoute
-  ) {
+
+  constructor(private librosService: LibrosService, private router: Router) {
     this.libro = {
       nombre: "",
       resena: "",

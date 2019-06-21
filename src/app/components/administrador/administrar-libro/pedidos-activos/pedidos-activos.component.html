@@ -39,10 +39,12 @@
                     <td> {{pedido.mailUsuario}} </td>
                     <td> {{pedido.nombreLibro}} </td>
                     <td> {{pedido.fechaReserva|date}} </td>
-                    <td> {{getFechaDevolucion(pedido) | date}}</td>
+                    <!-- -->
+                    <td [ngStyle]="{color: getColor(pedido)}"> {{pedido.fechaDevolucion|date}}</td>
+                    <!-- -->
                     <td> {{pedido.estado}} </td>
                     <td>
-                        <button (click)="insertarDevolucionLibro(pedido)" class="btn btn-outline-success" style="padding: 5px"><i class="fas fa-check-double"></i></button>
+                        <button (click)="insertarDevolucionLibro(pedido)" class="btn btn-outline-success" style="padding: 5px" data-toggle="tooltip" data-placement="bottom" title="Insertar devolución"><i class="fas fa-check-double"></i></button>
                     </td>
                 </tr>
             </tbody>

@@ -6,6 +6,7 @@ export class LibroPedido {
   nombreLibro: string;
   idLibro: string;
   fechaReserva?: Date;
+  fechaDevolucion?: Date;
   estado: string;
   key$?: string;
 

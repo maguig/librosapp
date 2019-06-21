@@ -1,5 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
-import { Router, ActivatedRoute } from "@angular/router";
+import { Component, OnInit } from "@angular/core";
 import { Libro } from "../../../model/libro.model";
 import { LibrosService } from "../../../Services/libros.service";
 import { LibrosPedidosService } from "src/app/services/libros-pedidos.service";

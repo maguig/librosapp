@@ -12,6 +12,7 @@ export class PedidosActivosComponent implements OnInit {
   pedidos: LibroPedido[];
   pedido: LibroPedido = null;
   pedidosAceptados: LibroPedido[] = [];
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
@@ -31,19 +32,34 @@ export class PedidosActivosComponent implements OnInit {
     });
   }
 
-  getFechaDevolucion(reserva: LibroPedido) {
+  getFechaDevolucion(pedido: LibroPedido) {
     let fecha: Date;
-    let fr = new Date(reserva.fechaReserva.toString());
+    let fr = new Date(pedido.fechaReserva.toString());
 
-    if (reserva.fechaReserva) {
+    if (pedido.fechaReserva) {
       let day = fr.getDate();
       let month = fr.getMonth();
       let year = fr.getFullYear();
 
       fecha = new Date(year, month, day + 5);
-    }
 
-    return fecha;
+      this.pedidosService.obtenerPedido(pedido.key$).subscribe(data => {
+        if (data) {
+          pedido.fechaDevolucion = fecha;
+          this.pedidosService
+            .actualizarPedido(pedido, pedido.key$)
+            .subscribe(data => {});
+        }
+      });
+    }
+  }
+
+  getColor(pedido: LibroPedido) {
+    let fechaHoy = new Date(Date.now());
+    let fechaDevolucion = new Date(pedido.fechaDevolucion.toString());
+    if (fechaHoy >= fechaDevolucion) {
+      return "red";
+    }
   }
 
   insertarDevolucionLibro(pedido: LibroPedido) {
@@ -58,4 +74,6 @@ export class PedidosActivosComponent implements OnInit {
       }
     });
   }
+
+  buscarMorosos() {}
 }
