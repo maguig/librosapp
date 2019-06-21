@@ -46,9 +46,9 @@ export class PedidosActivosComponent implements OnInit {
       this.pedidosService.obtenerPedido(pedido.key$).subscribe(data => {
         if (data) {
           pedido.fechaDevolucion = fecha;
-          //   this.pedidosService
-          //     .actualizarPedido(pedido, pedido.key$)
-          //     .subscribe(data => {});
+          this.pedidosService
+            .actualizarPedido(pedido, pedido.key$)
+            .subscribe(data => {});
         }
       });
     }
