@@ -46,18 +46,19 @@ export class PedidosActivosComponent implements OnInit {
       this.pedidosService.obtenerPedido(pedido.key$).subscribe(data => {
         if (data) {
           pedido.fechaDevolucion = fecha;
-          this.pedidosService
-            .actualizarPedido(pedido, pedido.key$)
-            .subscribe(data => {});
+          //   this.pedidosService
+          //     .actualizarPedido(pedido, pedido.key$)
+          //     .subscribe(data => {});
         }
       });
     }
+    return pedido.fechaDevolucion;
   }
 
   getColor(pedido: LibroPedido) {
     let fechaHoy = new Date(Date.now());
-    let fechaDevolucion = new Date(pedido.fechaDevolucion.toString());
-    if (fechaHoy >= fechaDevolucion) {
+    // let fechaDevolucion = new Date(pedido.fechaDevolucion.toString());
+    if (fechaHoy >= pedido.fechaDevolucion) {
       return "red";
     }
   }

@@ -40,7 +40,7 @@
                     <td> {{pedido.nombreLibro}} </td>
                     <td> {{pedido.fechaReserva|date}} </td>
                     <!-- -->
-                    <td [ngStyle]="{color: getColor(pedido)}"> {{pedido.fechaDevolucion|date}}</td>
+                    <td [ngStyle]="{color: getColor(pedido)}"> {{ getFechaDevolucion(pedido) |date}}</td>
                     <!-- -->
                     <td> {{pedido.estado}} </td>
                     <td>
