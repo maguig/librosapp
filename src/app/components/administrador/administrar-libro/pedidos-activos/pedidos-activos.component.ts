@@ -57,8 +57,8 @@ export class PedidosActivosComponent implements OnInit {
 
   getColor(pedido: LibroPedido) {
     let fechaHoy = new Date(Date.now());
-    // let fechaDevolucion = new Date(pedido.fechaDevolucion.toString());
-    if (fechaHoy >= pedido.fechaDevolucion) {
+    let fechaDevolucion = new Date(pedido.fechaDevolucion.toString());
+    if (fechaHoy >= fechaDevolucion) {
       return "red";
     }
   }
@@ -76,5 +76,17 @@ export class PedidosActivosComponent implements OnInit {
     });
   }
 
-  buscarMorosos() {}
+  buscarMorosos() {
+    let clientesMorosos = [];
+    let fechaHoy = new Date(Date.now());
+    let fechaDevolucion: any;
+    for (let i = 0; i < this.pedidos.length; i++) {
+      let pedido = this.pedidos[i];
+      fechaDevolucion = new Date(this.pedidos[i].fechaDevolucion.toString());
+      if (fechaHoy >= fechaDevolucion) {
+        clientesMorosos.push(pedido);
+      }
+    }
+    this.pedidos = clientesMorosos;
+  }
 }
