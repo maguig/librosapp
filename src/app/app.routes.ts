@@ -2,7 +2,6 @@ import { Routes, RouterModule } from "@angular/router";
 
 import { LibroComponent } from "./components/libro/libro.component";
 import { CatalogoComponent } from "./components/catalogo/catalogo.component";
-import { InicioComponent } from "./components/inicio/inicio.component";
 import { PedidosComponent } from "./components/pedidos/pedidos.component";
 import { UsuarioAdmComponent } from "./components/administrador/administrar-libro/usuario-adm/usuario-adm.component";
 import { PedidosActivosComponent } from "./components/administrador/administrar-libro/pedidos-activos/pedidos-activos.component";
@@ -16,7 +15,6 @@ import { ReservasComponent } from "./components/administrador/administrar-libro/
 const APP_ROUTES: Routes = [
   { path: "libro/:id", component: LibroComponent },
   { path: "catalogo", component: CatalogoComponent },
-  { path: "inicio", component: InicioComponent },
   { path: "pedido/:id", component: PedidosComponent },
   { path: "editarLibro/:id", component: EditarLibroComponent },
   { path: "agregarLibro", component: AgregarLibroComponent },

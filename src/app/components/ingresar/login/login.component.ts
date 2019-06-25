@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Router, ActivatedRoute } from "@angular/router";
+import { Router } from "@angular/router";
 import { Usuario } from "../../../model/usuario.model";
 import { UsuarioService } from "../../../services/usuario.service";
 import { AuthService } from "src/app/services/auth.service";
@@ -18,8 +18,7 @@ export class LoginComponent implements OnInit {
     private usuarioService: UsuarioService,
     private authService: AuthService,
     private pedidosService: LibrosPedidosService,
-    private router: Router,
-    private route: ActivatedRoute
+    private router: Router
   ) {
     this.usuario = {
       nombre: "",

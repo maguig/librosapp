@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { NgForm } from "@angular/forms";
 import { Router, ActivatedRoute } from "@angular/router";
 import { Libro } from "../../../../model/libro.model";
 import { LibrosService } from "../../../../Services/libros.service";

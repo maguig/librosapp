@@ -8,9 +8,7 @@ import { UsuarioService } from "src/app/services/usuario.service";
   styleUrls: ["./usuario-adm.component.css"]
 })
 export class UsuarioAdmComponent implements OnInit {
-  todosLosUsuarios: Usuario[];
   usuarios: Usuario[];
-  usuario: Usuario = null;
 
   constructor(private usuarioService: UsuarioService) {}
 

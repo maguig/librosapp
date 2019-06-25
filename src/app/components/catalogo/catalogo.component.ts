@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { LibrosService } from "../../Services/libros.service";
 import { Libro } from "../../model/libro.model";
-import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: "app-catalogo",
@@ -12,11 +11,7 @@ export class CatalogoComponent implements OnInit {
   libros: Libro[] = [];
   todosLosLibros: Libro[];
 
-  constructor(
-    private activatedRoute: ActivatedRoute,
-    private librosService: LibrosService,
-    private router: Router
-  ) {
+  constructor(private librosService: LibrosService) {
     this.librosService.obtenerLibros().subscribe(data => {
       console.log(data);
 

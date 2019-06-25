@@ -2,8 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { LibroPedido } from "../../model/libroPedido.model";
 import { LibrosPedidosService } from "../../services/libros-pedidos.service";
-import { UsuarioService } from "../../services/usuario.service";
-import { Usuario } from "src/app/model/usuario.model";
 import { AuthService } from "src/app/services/auth.service";
 
 @Component({
@@ -13,11 +11,8 @@ import { AuthService } from "src/app/services/auth.service";
 })
 export class PedidosComponent implements OnInit {
   pedidos: LibroPedido[];
-  pedido: LibroPedido;
-  usuario: Usuario;
   librosPedidos: LibroPedido[] = [];
   constructor(
-    private usuarioService: UsuarioService,
     public pedidosService: LibrosPedidosService,
     private router: Router,
     private authService: AuthService
@@ -75,6 +70,7 @@ export class PedidosComponent implements OnInit {
     for (let i = 0; i < this.pedidos.length; i++) {
       let libroPedido = this.pedidos[i];
       libroPedido.estado = "Confirmado";
+      libroPedido.fechaDevolucion = this.getFechaDevolucion(libroPedido);
 
       this.pedidosService
         .actualizarPedido(libroPedido, libroPedido.key$)

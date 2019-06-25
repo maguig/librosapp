@@ -17,7 +17,6 @@ import { AppComponent } from "./app.component";
 import { NavbarComponent } from "./components/shared/navbar/navbar.component";
 import { CatalogoComponent } from "./components/catalogo/catalogo.component";
 import { LibroComponent } from "./components/libro/libro.component";
-import { InicioComponent } from "./components/inicio/inicio.component";
 import { TarjetaComponent } from "./components/tarjeta/tarjeta.component";
 import { PedidosComponent } from "./components/pedidos/pedidos.component";
 import { UsuarioAdmComponent } from "./components/administrador/administrar-libro/usuario-adm/usuario-adm.component";
@@ -35,7 +34,6 @@ import { ReservasComponent } from "./components/administrador/administrar-libro/
     NavbarComponent,
     CatalogoComponent,
     LibroComponent,
-    InicioComponent,
     TarjetaComponent,
     PedidosComponent,
     UsuarioAdmComponent,
